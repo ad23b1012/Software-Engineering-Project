@@ -1,0 +1,17 @@
+{
+  "name": "medilink",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite"
+  },
+  "keywords": [],
+  "author": "Abhishek Buddiga",
+  "license": "ISC",
+  "description": "MediLink healthcare platform",
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.3",
+    "vite": "^5.4.10"
+  }
+}
