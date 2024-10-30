@@ -10,7 +10,6 @@ import MyAppointments from './pages/MyAppointments'
 import Appointment from './pages/Appointment'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import History from './pages/History'
 
 const App = () => (
   <div className='mx-4 sm:mx-[10%]'>
@@ -18,7 +17,6 @@ const App = () => (
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/doctors' element={<Doctors />} />
-      <Route path='/history' element={<History />} />
       <Route path='/doctors/:speciality' element={<Doctors />} />
       <Route path='/login' element={<Login />} />
       <Route path='/about' element={<About />} />
