@@ -1,22 +1,18 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 
-const RelatedDoctors = ([speciality, docId]) => {
-
-    const { doctors } = useContext(AppContext)
-    const navigate = useNavigate()
-    const [relDoc, setRelDocs] = useState([])
+const RelatedDoctors = ({ speciality, docId }) => {  // Destructure as object properties
+    const { doctors } = useContext(AppContext);
+    const navigate = useNavigate();
+    const [relDoc, setRelDocs] = useState([]);
 
     useEffect(() => {
         if (doctors.length > 0 && speciality) {
-            const doctorsData = doctors.filter((doc) => doc.speciality === speciality && doc.Id !== docId)
-            setRelDocs(doctorsData)
+            const doctorsData = doctors.filter((doc) => doc.speciality === speciality && doc.id !== docId);
+            setRelDocs(doctorsData);
         }
-    }, [doctors, speciality, docId])
+    }, [doctors, speciality, docId]);
 
     return (
         <div className='flex flex-col items-center gap-4 my-16 text-grey-900 md:mx-10'>
@@ -25,8 +21,12 @@ const RelatedDoctors = ([speciality, docId]) => {
             <div className='w-full grid grid-cols-auto gap-4 pt-5 gap-y-6 px-3 sm:px-0'>
                 {relDoc.slice(0, 5).map((item) => (
                     <div
-                        key={item.id}  // Ensure a unique key for each item
-                        onClick={() => { navigate('/appointment/${item._id}'); scrollTo(0, 0) }} className='border border-gray-300 p-4 rounded-lg cursor-pointer hover:-translate-y-2 transition-all duration-500'>
+                        key={item._id || item.id}  // Use _id or id as a unique key
+                        onClick={() => { 
+                            navigate(`/appointment/${item._id || item.id}`); 
+                            scrollTo(0, 0); 
+                        }} 
+                        className='border border-gray-300 p-4 rounded-lg cursor-pointer hover:-translate-y-2 transition-all duration-500'>
                         <img className='bg-blue-50' src={item.image} alt="" />
                         <div className='p-4'>
                             <div className='flex items-center gap-2 text-sm text-center text-green-500'>
@@ -39,9 +39,9 @@ const RelatedDoctors = ([speciality, docId]) => {
                     </div>
                 ))}
             </div>
-            <button onClick={() => { navigate('/doctors'); scrollTo(0, 0) }} className='bg-blue-50 text-gray-600 px-12 py-3 rounded-full mt-10'>More</button>
+            <button onClick={() => { navigate('/doctors'); scrollTo(0, 0); }} className='bg-blue-50 text-gray-600 px-12 py-3 rounded-full mt-10'>More</button>
         </div>
-    )
+    );
 }
 
-export default RelatedDoctors
+export default RelatedDoctors;

@@ -8,17 +8,17 @@ const AppContextProvider = (props) => {
   const currencySymbol = ' ₹ ';
   const backendUrl = import.meta.env.VITE_BACKEND_URL
 
+  const [doctors, setDoctors] = useState([]);
   // Define the token and setToken state here
   const [token, setToken] = useState(localStorage.getItem('token')? localStorage.getItem('token'):false);
   
   // Define the other states
-  const [doctors, setDoctors] = useState([]);
   const [userData, setUserData] = useState(false);
 
   // Function to fetch doctors data
   const getDoctorsData = async () => {
     try {
-      const { data } = await axios.get(backendUrl + '/api/doctor/list');
+      const { data } = await axios.get(backendUrl + 'api/doctor/list');
       if (data.success) {
         setDoctors(data.doctors);
       } else {
@@ -47,8 +47,8 @@ const AppContextProvider = (props) => {
 
   // Values to be shared via context
   const value = {
-    token, setToken,           // Added token and setToken to context
-    doctors,
+    token, setToken,
+    doctors, getDoctorsData,
     currencySymbol,
     backendUrl,
     userData, setUserData,
