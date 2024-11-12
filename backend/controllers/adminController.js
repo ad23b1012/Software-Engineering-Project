@@ -130,17 +130,18 @@ const appointmentCancel = async (req, res) => {
       res.json({ success: false, message: error.message });
     }
   };
-// API TO get dashboar for admin panel
+// API TO get dashboard for admin panel
 const adminDashboard= async(req,res)=>{
 
     try{
-        const doctors=await doctorModel.find({})
-        const users=await userModel.find({})
-        const appointment= await appointmentModel.find({})
+        const doctors = await doctorModel.find({})
+        const users = await userModel.find({})
+        const appointment = await appointmentModel.find({})
 
         const dashData={
             doctors:doctors.length,
             appointment:appointment.length,
+            patients: users.length,
             latestAppointment:appointment.reverse().slice(0,5)
         }
         res.json({success:true,dashData})

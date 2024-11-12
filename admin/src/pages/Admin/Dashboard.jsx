@@ -5,8 +5,7 @@ import { AppContext } from '../../context/AppContext';
 
 const Dashboard = () => {
   const { aToken, getDashData, cancelAppointment, dashData } = useContext(AdminContext);
-
-    const {slotDateFormat}=useContext(AppContext)
+  const { slotDateFormat } = useContext(AppContext);
 
   useEffect(() => {
     if (aToken) {
@@ -49,7 +48,7 @@ const Dashboard = () => {
         </div>
         <div className='pt-4 border border-t-0'>
           {
-            dashData.latestAppoitment.map((item, index) => (
+            dashData.latestAppointment && dashData.latestAppointment.map((item, index) => (
               <div className='flex items-center px-6 py-3 gap-3 hover:bg-gray-100' key={index}>
                 <img className='rounded-full w-10' src={item.docData.image} alt="" />
                 <div className='flex-1 text-sm'>

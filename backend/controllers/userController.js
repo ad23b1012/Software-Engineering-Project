@@ -184,16 +184,12 @@ const cancelAppointment = async (req, res) => {
     if (appointmentData.userId !== userId) {
       return res.json({ success: false, message: "Unauthorized action" });
     }
-    await appointmentModel.findByIdAndUpdate(appointmentId, {
-      cancelled: true,
-    });
+    await appointmentModel.findByIdAndUpdate(appointmentId, {cancelled: true});
     /// releasing doctor slot
     const { docId, slotDate, slotTime } = appointmentData;
     const doctorData = await doctorModel.findById(docId);
     let slots_booked = doctorData.slots_booked;
-    slots_booked[slotDate] = slots_booked[slotDate].filter(
-      (e) => e !== slotTime
-    );
+    slots_booked[slotDate] = slots_booked[slotDate].filter((e) => e !== slotTime);
 
     await doctorModel.findByIdAndUpdate(docId, { slots_booked });
     res.json({ success: true, message: "Appointment Cancelled" });
@@ -220,7 +216,7 @@ const paymentRazorpay = async (req, res) => {
         message: "appointment cancelled or not found",
       });
     }
-    // ceeating options for raazorpay payment
+    // creating options for raazorpay payment
     const options = {
       amount: appointmentData.amount * 100,
       currency: process.env.CURRENCY,
@@ -243,10 +239,10 @@ const verifyRazorpay = async (req,res)=>{
 
         if(orderInfo.status==='paid'){
             await appointmentModel.findByIdAndUpdate(orderInfo.receipt,{payment:true})
-            res.json({success:true,message:"payent successful"})
+            res.json({success:true,message:"Payment Successful"})
         }
         else{
-            res.json({success:false,message:error.message})
+            res.json({success:false,message:"Payment Failed"})
         }
     } catch (error) {
         console.log(error)

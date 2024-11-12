@@ -8,9 +8,7 @@ const changeAvailability = async (req, res) => {
     const { docId } = req.body;
 
     const docData = await doctorModel.findById(docId);
-    await doctorModel.findByIdAndUpdate(docId, {
-      available: !docData.available,
-    });
+    await doctorModel.findByIdAndUpdate(docId, {available: !docData.available});
     res.json({ success: true, message: "Availability Changed" });
   } catch (error) {
     console.log(error);
@@ -59,24 +57,23 @@ const appointmentsDoctor = async (req, res) => {
     const { docId } = req.body;
     const appointments = await appointmentModel.find({ docId });
 
-    res.json({ success: false, message: error.message });
+    res.json({ success: true, appointments });
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: error.message });
   }
 };
 
+
 // Api to mark appointment completed for doctor panel
 const appointmentComplete = async (req, res) => {
   try {
     const { docId, appointmentId } = req.body;
 
-    const appointmentData = appointmentModel.findById(appointmentId);
+    const appointmentData = await appointmentModel.findById(appointmentId); // Added await
 
     if (appointmentData && appointmentData.docId === docId) {
-      await appointmentModel.findByIdAndUpdate(appointmentId, {
-        isCompleted: true,
-      });
+      await appointmentModel.findByIdAndUpdate(appointmentId, { isCompleted: true });
       return res.json({ success: true, message: "Appointment Completed" });
     } else {
       return res.json({ success: false, message: "Mark Failed" });
@@ -86,18 +83,15 @@ const appointmentComplete = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
-
-// Api to cancel appointment for doctor panel
+ // api to cancel appointment
 const appointmentCancel = async (req, res) => {
   try {
     const { docId, appointmentId } = req.body;
 
-    const appointmentData = appointmentModel.findById(appointmentId);
+    const appointmentData = await appointmentModel.findById(appointmentId); // Added await
 
     if (appointmentData && appointmentData.docId === docId) {
-      await appointmentModel.findByIdAndUpdate(appointmentId, {
-        cancelled: true,
-      });
+      await appointmentModel.findByIdAndUpdate(appointmentId, { cancelled: true });
       return res.json({ success: true, message: "Appointment Cancelled" });
     } else {
       return res.json({ success: false, message: "Cancellation Failed" });
@@ -107,6 +101,7 @@ const appointmentCancel = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
+
 // Api to get dashboard data for doctor panel
 const doctorDashboard = async (req, res) => {
   try {
@@ -114,7 +109,7 @@ const doctorDashboard = async (req, res) => {
     const appointments = await appointmentModel.find({ docId });
     let earnings = 0;
     appointments.map((item) => {
-      if (item.isCompleted || item.paymnt) {
+      if (item.isCompleted || item.payment) {
         earnings += item.amount;
       }
     });
@@ -122,7 +117,7 @@ const doctorDashboard = async (req, res) => {
     let patients = [];
 
     appointments.map((item) => {
-      if (!patients.includes(item.userId)) {
+      if (!patients.includes(item.userId)) { 
         patients.push(item.userId);
       }
     });
@@ -131,7 +126,7 @@ const doctorDashboard = async (req, res) => {
       earnings,
       appointments: appointments.length,
       patients: patients.length,
-      latestAppointents: appointments.reverse().slice(0, 5),
+      latestAppointments: appointments.reverse().slice(0, 5),
     };
 
     res.json({ success: true, dashData });
@@ -162,7 +157,7 @@ const updateDoctorProfile = async (req, res) => {
 
     await doctorModel.findByIdAndUpdate(docId, { fees, address, available });
 
-    res.json({ success: true, message: "Profile Updated" });
+    res.json({ success: true, message: 'Profile Updated' });
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: error.message });
@@ -178,5 +173,5 @@ export {
   appointmentComplete,
   doctorDashboard,
   doctorProfile,
-  updateDoctorProfile,
-};
+  updateDoctorProfile
+}

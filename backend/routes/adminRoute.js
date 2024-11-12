@@ -11,7 +11,7 @@ adminRouter.post('/add-doctor',authAdmin, upload.single('image'),addDoctor)
 adminRouter.post('/login',loginAdmin)
 adminRouter.post('/all-doctors',authAdmin,allDoctors)
 adminRouter.post('/change-availability',authAdmin,changeAvailability)
-adminRouter.post('/appointments',authAdmin,appointmentsAdmin)
+adminRouter.get('/appointments',authAdmin,appointmentsAdmin)
 adminRouter.post('/cancel-appointment',authAdmin,appointmentCancel)
 adminRouter.get('/dashboard',authAdmin,adminDashboard)
 export default adminRouter
