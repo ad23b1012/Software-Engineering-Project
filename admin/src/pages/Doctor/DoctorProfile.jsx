@@ -5,8 +5,8 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 
 const DoctorProfile = () => {
-  const { dToken, profileData, setProfileData, getProfileData } = useContext(DoctorContext);
-  const { currency, backendUrl } = useContext(AppContext);
+  const { dToken, profileData, setProfileData, getProfileData, backendUrl } = useContext(DoctorContext);
+  const { currency } = useContext(AppContext);
   const [isEdit, setIsEdit] = useState(false);
 
   const updateProfile = async () => {
@@ -16,11 +16,13 @@ const DoctorProfile = () => {
         fees: profileData.fees,
         available: profileData.available
       };
-      const { data } = await axios.post(`${backendUrl}/api/doctor/update-profile`, updateData, { headers: { dToken } });
+      const { data } = await axios.post(backendUrl + '/api/doctor/update-profile', updateData, { headers: { dToken } });
       if (data.success) {
         toast.success(data.message);
         setIsEdit(false);
         getProfileData();
+      } else {
+        toast.error(data.message)
       }
     } catch (error) {
       toast.error(error.message);
@@ -64,8 +66,7 @@ const DoctorProfile = () => {
         <div className='flex gap-2 py-2'>
           <p>Address:</p>
           <div className='text-sm'>
-            {isEdit ? <input type="text" onChange={(e) => setProfileData(prev => ({ ...prev, address: { ...prev.address, line1: e.target.value } }))} value={profileData.address.line1}
-            /> : profileData.address.line1}
+            {isEdit ? <input type="text" onChange={(e) => setProfileData(prev => ({ ...prev, address: { ...prev.address, line1: e.target.value } }))} value={profileData.address.line1} /> : profileData.address.line1}
             <br />
             {isEdit ?
               <input
@@ -77,8 +78,7 @@ const DoctorProfile = () => {
         </div>
 
         <div className='flex gap-1 pt-2'>
-          <input type="checkbox"
-            onChange={() => isEdit && setProfileData(prev => ({ ...prev, available: !prev.available }))}
+          <input type="checkbox" onChange={() => isEdit && setProfileData(prev => ({ ...prev, available: !prev.available }))}
             checked={profileData.available}
           />
           <label htmlFor="available">Available</label>

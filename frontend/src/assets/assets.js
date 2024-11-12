@@ -93,8 +93,8 @@ export const doctors = [
         speciality: 'General physician',
         degree: 'MBBS',
         experience: '4 Years',
-        about: 'Dr. Abhuday has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        fees: 50,
+        about: 'Dr. Athul has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
+        fees: 500,
         address: {
             line1: '17th Cross, Richmond',
             line2: 'Circle, Ring Road, London'
