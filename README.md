@@ -1,4 +1,4 @@
-<img width="1427" alt="Screenshot 2024-11-26 at 2 44 12 PM" src="https://github.com/user-attachments/assets/5cf0e438-b26f-47b8-86e5-bb51adfeafd0">🌐 MediLink – Your Gateway to Seamless Healthcare Connections
+🌐 MediLink – Your Gateway to Seamless Healthcare Connections
 
 MediLink is revolutionizing the way patients, healthcare providers, and facilities interact. From booking appointments to managing medical records, MediLink bridges the gap between healthcare and technology, offering a streamlined, user-friendly, and secure platform.
 
