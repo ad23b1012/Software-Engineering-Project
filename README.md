@@ -79,13 +79,15 @@ Submit a pull request.
 <img width="1436" alt="Screenshot 2024-11-22 at 2 09 02 PM" src="https://github.com/user-attachments/assets/726b1357-100b-4b08-b5da-07ec3bf324eb">
 <img width="1434" alt="Screenshot 2024-11-26 at 2 44 17 PM" src="https://github.com/user-attachments/assets/06dcb65a-2151-4aaf-a5bf-cff7c65b683d">
 
+🧑‍💻Mentored by **Parth Goel**
+
 🧑‍💻 Team
-Abhishek
+**Abhishek
 Charukesh
 Charan
 Nabiketh
 Sai Pranay
-Vasu Deva Reddy
+Vasu Deva Reddy**
 
 ⭐ Star This Repository
 If you find MediLink useful, give it a ⭐ and share it with others in the healthcare tech space!
