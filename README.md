@@ -1,4 +1,4 @@
-🌐 MediLink – Your Gateway to Seamless Healthcare Connections
+<img width="1427" alt="Screenshot 2024-11-26 at 2 44 12 PM" src="https://github.com/user-attachments/assets/5cf0e438-b26f-47b8-86e5-bb51adfeafd0">🌐 MediLink – Your Gateway to Seamless Healthcare Connections
 
 MediLink is revolutionizing the way patients, healthcare providers, and facilities interact. From booking appointments to managing medical records, MediLink bridges the gap between healthcare and technology, offering a streamlined, user-friendly, and secure platform.
 
@@ -58,7 +58,12 @@ Commit your changes: git commit -m "Add new feature".
 Push to the branch: git push origin feature-name.
 Submit a pull request.
 📸 Screenshots
-(Include images or gifs of your project in action)
+<img width="1436" alt="Screenshot 2024-11-26 at 2 44 06 PM" src="https://github.com/user-attachments/assets/343bdd32-84cc-4dee-b520-87d0461ff81f">
+<img width="1436" alt="Screenshot 2024-11-26 at 2 44 42 PM" src="https://github.com/user-attachments/assets/b272f691-87d8-4148-8c06-daeb461a0e20">
+<img width="1437" alt="Screenshot 2024-11-22 at 4 32 31 PM" src="https://github.com/user-attachments/assets/94061008-4b0d-4dbd-8883-a18c131fcd15">
+<img width="1427" alt="Screenshot 2024-11-26 at 2 44 12 PM" src="https://github.com/user-attachments/assets/49bb4966-e61c-458e-ad0e-a53ca67e209a">
+<img width="1436" alt="Screenshot 2024-11-22 at 2 09 02 PM" src="https://github.com/user-attachments/assets/726b1357-100b-4b08-b5da-07ec3bf324eb">
+<img width="1434" alt="Screenshot 2024-11-26 at 2 44 17 PM" src="https://github.com/user-attachments/assets/06dcb65a-2151-4aaf-a5bf-cff7c65b683d">
 
 🧑‍💻 Team
 Abhishek
